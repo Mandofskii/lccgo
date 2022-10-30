@@ -21,16 +21,8 @@ func ArgsHandler(cmd string){
 		os.Exit(0)
 	}
 	if directoryRegex.MatchString(cmd) {
-		if strings.HasSuffix(cmd, "/") {
-			var counts, lines = DirectoryCharacterAndLineCounter(cmd)
-			fmt.Println("Directory: ",cmd)
-			fmt.Println("Total Characters: ",counts,"\nTotal Lines: ",lines)
-			os.Exit(0)
-		}
 		if _, err := os.Stat(cmd); err == nil {
-			var counts, lines = CharacterAndLineCounter(cmd)
-			fmt.Println("File: ",cmd)
-			fmt.Println("Characters: ",counts,"\nLines: ",lines)
+			CharacterAndLineCounter(cmd)
 			os.Exit(1)
 		} else {
 			os.Exit(0)
